@@ -19,7 +19,7 @@ int main()
     // bind to a port
  	struct sockaddr_in sin;
     memset(&sin, 0, sizeof(sin));
-    sin.sin_len = sizeof(sin);  // comment this line out if running on pyrite (linux)
+    //sin.sin_len = sizeof(sin);  // comment this line out if running on pyrite (linux)
     sin.sin_family = AF_INET; // or AF_INET6 (address family)
     sin.sin_port = htons(1234);
     sin.sin_addr.s_addr= INADDR_ANY;
