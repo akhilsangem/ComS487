@@ -26,7 +26,7 @@ void *heartBeat(void *arg){
   b.IP[3] = '0';
   b.CmdPort = 9003;
   while (1) {
-      usleep(1);
+      usleep(60000000);
       printf("sending heartBeat to manager\n");
   }
 
@@ -37,6 +37,7 @@ int main(int argc, char const *argv[], char * envp[]) {
   pthread_t beaconHeart;
   pthread_create(&beaconHeart,NULL,heartBeat,NULL);
   while (1) {
+    usleep(1);
     printf("listening to tcp\n");
   }
   pthread_join(beaconHeart,NULL);
