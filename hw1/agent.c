@@ -39,5 +39,6 @@ int main(int argc, char const *argv[], char * envp[]) {
   while (1) {
     printf("listening to tcp\n");
   }
+  pthread_join(beaconHeart,NULL);
   return 0;
 }
