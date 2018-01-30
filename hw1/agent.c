@@ -4,7 +4,7 @@
 #include <sys/socket.h>
 #include <time.h>
 #include <netinet/in.h>
-
+#include <unistd.h>
 void *heartBeat(void *arg){
   typedef struct BEACON
   {
@@ -14,7 +14,7 @@ void *heartBeat(void *arg){
     int CmdPort; // the client listens to this port for manager cmd
   } beacon;
 
-  srand((unsigned) time(&t));
+  srand((unsigned) time(NULL));
   beacon b;
   b.ID = rand() % 100;
   b.StartUpTime = (unsigned long)time(NULL);
@@ -25,7 +25,7 @@ void *heartBeat(void *arg){
   b.CmdPort = 9003;
   while (1) {
       usleep(1);
-      printf("sending heartBeat to manager\n", );
+      printf("sending heartBeat to manager\n");
   }
 
   return NULL;
@@ -35,7 +35,7 @@ int main(int argc, char const *argv[], char * envp[]) {
   pthread_t beaconHeart;
   pthread_create(&beaconHeart,NULL,heartBeat,NULL);
   while (1) {
-    printf("listening to tcp\n", );
+    printf("listening to tcp\n");
   }
   return 0;
 }
