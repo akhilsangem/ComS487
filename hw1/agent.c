@@ -5,6 +5,8 @@
 #include <time.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <pthread.h>
+
 void *heartBeat(void *arg){
   typedef struct BEACON
   {
