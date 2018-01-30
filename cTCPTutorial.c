@@ -38,5 +38,32 @@ int main(int argc, char const *argv[]) {
   //closing socket
   close(network_socket);
 
+
+  //now server stuff
+  char server_message[256] = "You have reached the server";
+
+  //create server socket
+  int server_socket;
+  server_socket = socket(AF_INET, SOCK_STREAM, 0);
+
+  //define server server_address
+  struct sockaddr_in server_address;
+  server_address.sin_family = AF_INET; //sets type of address
+  server_address.sin_port = htons(9002); //sets port
+  server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
+
+  //bid the socket to our specified ip and sin_port
+  bind(server_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
+
+  listen(server_socket, 5);
+
+  //holds client socket
+  int client_socket;
+  client_socket = accept(server_socket, NULL, NULL);
+
+  //send
+  send(client_socket, server_message, sizeof(server_message), 0);
+  close(server_socket);
+
   return 0;
 }
