@@ -24,7 +24,7 @@ void *heartBeat(void *arg){
   b.IP[1] = '0';
   b.IP[2] = '0';
   b.IP[3] = '0';
-  b.CmdPort = 9003;
+  b.CmdPort = 9002;
 
   int network_socket;
   network_socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -39,21 +39,23 @@ void *heartBeat(void *arg){
   //bid the socket to our specified ip and sin_port
   bind(network_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
 
-  listen(server_socket, 5);
-
-  //holds client socket
-  int client_socket;
-  client_socket = accept(server_socket, NULL, NULL);
-
-  //char server_response[256]; //just made a variable to store the data we got back from the receive
-  char test[4] = 'tes';
-
+  //listen(network_socket, 5);
 
   while (1) {
-    usleep(60000000);
+    //holds client socket
+    struct sockaddr client_addr;
+    unsigned int client_len;
+
+    int client_socket;
+    client_socket = accept(network_socket, NULL, NULL);
+    bind(client_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
+    char server_response[256] = "Hope to god this sends";
+    //char test[4] = "tes";
+    //usleep(60000000);
+    usleep(60);
     printf("sending heartBeat to manager...\n");
     //send
-    send(client_socket, test, sizeof(test), 0);
+    send(client_socket, server_response, sizeof(server_response), 0);
 
   }
 

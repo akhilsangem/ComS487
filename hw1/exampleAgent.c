@@ -13,7 +13,7 @@ void convertUpperCase(char *buffer, int length);
 int main()
 {
     // get a socket descriptor
-   	int server_socket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+   	int server_socket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
    	printf("server_socket = %d\n", server_socket);
 
     // bind to a port
@@ -21,7 +21,7 @@ int main()
     memset(&sin, 0, sizeof(sin));
     //sin.sin_len = sizeof(sin);  // comment this line out if running on pyrite (linux)
     sin.sin_family = AF_INET; // or AF_INET6 (address family)
-    sin.sin_port = htons(1234);
+    sin.sin_port = htons(9002);
     sin.sin_addr.s_addr= INADDR_ANY;
 
     if (bind(server_socket, (struct sockaddr *)&sin, sizeof(sin)) < 0)
@@ -49,7 +49,7 @@ int main()
 
 		// get the command length
 		char packet_length_bytes[4];
-		receiveFully(client_socket, packet_length_bytes, 4);
+		//receiveFully(client_socket, packet_length_bytes, 4);
 
 		printBinaryArray(packet_length_bytes, 4);
 
@@ -58,7 +58,7 @@ int main()
 
 		// allocate buffer to receive the data
 		char *buffer = (char *)malloc(packet_length);
-		receiveFully(client_socket, buffer, packet_length);
+		//receiveFully(client_socket, buffer, packet_length);
 
 		// convert to upper case
 	    convertUpperCase(buffer, packet_length);
