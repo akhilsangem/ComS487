@@ -38,7 +38,7 @@ int main(int argc, char const *argv[]) {
   //closing socket
   close(network_socket);
 
-
+//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
   //now server stuff
   char server_message[256] = "You have reached the server";
 

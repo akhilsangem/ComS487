@@ -35,22 +35,26 @@ void *heartBeat(void *arg){
   server_address.sin_port = htons(9002); //sets port
   server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
 
-  int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
 
-  if (connection_status == -1) {
-    printf("There was an error making a connection to the remote socket \n\n", );
-  }
+  //bid the socket to our specified ip and sin_port
+  bind(network_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
 
-  char server_response[256]; //just made a variable to store the data we got back from the receive
+  listen(server_socket, 5);
 
-  recv(network_socket, &server_response, sizeof(server_response), 0);
+  //holds client socket
+  int client_socket;
+  client_socket = accept(server_socket, NULL, NULL);
 
-  printf("The server sent the data: %s\n", server_response);
+  //char server_response[256]; //just made a variable to store the data we got back from the receive
+  char test[4] = 'tes';
+
 
   while (1) {
     usleep(60000000);
     printf("sending heartBeat to manager...\n");
-    recv(network_socket, &server_response, sizeof(server_response), 0);
+    //send
+    send(client_socket, test, sizeof(test), 0);
+
   }
 
   close(network_socket);
