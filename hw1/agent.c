@@ -27,7 +27,7 @@ void *heartBeat(void *arg){
   b.CmdPort = 9003;
 
   int network_socket;
-  network_socket = socket(AF_INET, SOCK_STREAM, 0);
+  network_socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 
   struct sockaddr_in server_address;
 
