@@ -52,7 +52,7 @@ int main(int argc, char const *argv[]) {
   server_address.sin_port = htons(9002); //sets port
   server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
 
-  //bid the socket to our specified ip and sin_port
+  //bind the socket to our specified ip and sin_port
   bind(server_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
 
   listen(server_socket, 5);
