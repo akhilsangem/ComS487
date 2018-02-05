@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]) {
 
   struct sockaddr_in server_address;
   server_address.sin_family = AF_INET; //sets type of address
-  server_address.sin_port = htons(9002); //sets port
+  server_address.sin_port = htons(9004); //sets port
   server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
 
   //socket, server address, size of the address, returns a success int
@@ -49,7 +49,7 @@ int main(int argc, char const *argv[]) {
   //define server server_address
   struct sockaddr_in server_address;
   server_address.sin_family = AF_INET; //sets type of address
-  server_address.sin_port = htons(9002); //sets port
+  server_address.sin_port = htons(9004); //sets port
   server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
 
   //bind the socket to our specified ip and sin_port

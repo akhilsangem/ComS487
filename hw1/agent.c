@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <strings.h>
+#include <sys/utsname.h>
 
 void *heartBeat(void *arg){
   typedef struct BEACON
@@ -70,43 +71,46 @@ void *heartBeat(void *arg){
 }
 
 int main(int argc, char const *argv[], char * envp[]) {
-  //pthread_t beaconHeart;
-  //pthread_create(&beaconHeart,NULL,heartBeat,NULL);
+  pthread_t beaconHeart;
+  pthread_create(&beaconHeart,NULL,heartBeat,NULL);
+  struct utsname unameData;
+  uname(&unameData);
+  char server_message[1];
+  char server_response[256] = "Holy Shit you got to the server";
+  //create server socket
+  int server_socket;
+  server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
+  //define server server_address
+  struct sockaddr_in server_address;
+  server_address.sin_family = AF_INET; //sets type of address
+  server_address.sin_port = htons(9004); //sets port
+  server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
+
+  //bind the socket to our specified ip and sin_port
+  bind(server_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
+  int client_socket;
   while (1) {
     usleep(1);
-    printf("doing tcp\n");
+    printf("Waiting for tcp request\n");
+    listen(server_socket, 5);
 
-    int network_socket;
-    //domain, type of socket, specifies protocol
-    network_socket = socket(AF_INET, SOCK_STREAM, 0);
-
-    //connect to another socket netinet has a structure for address and remote port
-
-    struct sockaddr_in server_address;
-    server_address.sin_family = AF_INET; //sets type of address
-    server_address.sin_port = htons(9004); //sets port
-    server_address.sin_addr.s_addr = INADDR_ANY; //connects to localhost
-
-    //socket, server address, size of the address, returns a success int
-    int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
-
-    //check for error with connection
-    if (connection_status == -1) {
-      printf("There was an error making a connection to the remote socket \n\n");
+    client_socket = accept(server_socket, NULL, NULL);
+    //bind(client_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
+    //bzero(server_message,256);
+    recv(client_socket, server_message, sizeof(server_message), 0);
+    if(server_message[0] == '2'){
+      write(client_socket, unameData.sysname, 12);
     }
 
-    //call receive function to receive data
-    char server_response[256]; //just made a variable to store the data we got back from the receive
-    recv(network_socket, &server_response, sizeof(server_response), 0);
+      write(client_socket, "You Have Connected to the C Server\n", 256);
+      printf("%s\n", server_message);
 
-    //printout the data that we just got
-    printf("The server sent the data: %s\n", server_response);
 
-    //closing socket
-    close(network_socket);
-  }
 
-  //pthread_join(beaconHeart,NULL);
+    //close(client_socket);
+    }
+  //close(server_socket);
+  pthread_join(beaconHeart,NULL);
   return 0;
 }
