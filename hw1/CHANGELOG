@@ -1,0 +1,150 @@
+commit 8fd095b1c84264ae9be821d8f0a0325c071836a2
+Author: Akhil Sangem <yeesaurusrex@Yeesauruss-MacBook-Pro.local>
+Date:   Mon Feb 5 03:32:53 2018 -0600
+
+    Finalizing code. Formatting Code. Submitting.
+
+commit b1c89a84f516ed72823f005d62ba55d7a84c20d3
+Author: Akhil Sangem <yeesaurusrex@Yeesauruss-MacBook-Pro.local>
+Date:   Mon Feb 5 02:39:31 2018 -0600
+
+    Can now communicate both on udp and tcp
+    Can now run both threads
+
+commit bee1ad5e8356623fb6d6a822e7db0d7350ac3e7f
+Author: Akhil Sangem <yeesaurusrex@Yeesauruss-MacBook-Pro.local>
+Date:   Sun Feb 4 16:22:28 2018 -0600
+
+    Able to establish tcp connection on manager and agent
+
+commit 15fc6e0ddf8c327c605a4d413cbb14f3f60dd729
+Author: Akhil Sangem <yeesaurusrex@Yeesauruss-MacBook-Pro.local>
+Date:   Thu Feb 1 12:19:15 2018 -0600
+
+    Edited struct order
+    Can now send udp datagram and receive on manager.
+    Manager can now store information from past agents in an array
+
+commit 319e6ebfcfe43c538088f8ca106e1d68d749ebbb
+Author: Akhil Sangem <yeesaurusrex@xyphos-macbookpro.student.iastate.edu>
+Date:   Wed Jan 31 13:25:55 2018 -0600
+
+    Set up a java server to recieve data from udp.
+
+    Was able to successfully send a message.
+
+commit 26a75ab6687c7e338a64ffb830214e039af52f99
+Merge: e5fafdc a20b2d5
+Author: Akhil Sangem <yeesaurusrex@Yeesauruss-MacBook-Pro.local>
+Date:   Tue Jan 30 18:26:47 2018 -0600
+
+    Merge branch 'master' of https://github.com/amorphos/ComS487
+
+commit e5fafdc98706275c5ffa241937dadd97b578e55c
+Author: Akhil Sangem <yeesaurusrex@Yeesauruss-MacBook-Pro.local>
+Date:   Tue Jan 30 18:26:30 2018 -0600
+
+    merging from mac
+
+commit a20b2d5c9a54fb3a0d598ef57f23ab48b129907a
+Merge: 4278893 b430313
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Tue Jan 30 17:12:20 2018 -0600
+
+    Merge branch 'master' of https://github.com/amorphos/ComS487
+
+commit 4278893465ff2553786592a2d7f7267843f49cda
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Tue Jan 30 17:12:01 2018 -0600
+
+    Added code for sending a UDP datagram
+
+commit b43031314a33c93daae59f373c03005e61f07560
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Tue Jan 30 13:24:08 2018 -0600
+
+    Update README.md
+
+commit fe4d4a64f3781304433a4ca2ce3c3037f9eadc6a
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Tue Jan 30 13:23:27 2018 -0600
+
+    Create README.md
+
+commit fb2abd8c672d920ab855bc6a93209004024bacb7
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 23:28:34 2018 -0600
+
+    added urls to notes
+
+commit 5ce8e6042aa69eec278883f4a7380497cccac69a
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 23:09:13 2018 -0600
+
+    Preparing tcp socket
+
+commit e87823afeeb3ccc672bd6836187984d23180df8a
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 22:16:51 2018 -0600
+
+    changed usleep
+
+commit f70695e31d8694230868221954a4f27b1cfd6f8e
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 22:07:43 2018 -0600
+
+    added pthread_join
+
+commit 4408b0afbe68cb3e53791d046e8729174d0c1b1f
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 22:05:26 2018 -0600
+
+    added pthread.h
+
+commit 576df10b7141cc56e65c40089263e8fa0050b453
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 22:04:07 2018 -0600
+
+    added unistd.h
+
+commit 5f815ff6f2900f2a5e7a4e078b2fa0a7cedb6063
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 21:58:14 2018 -0600
+
+    Created agent. Working on getting threads to run
+
+commit 09c8179c130843ca74592f151536e851dc5000f8
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 19:26:05 2018 -0600
+
+    Added code for tcp server
+
+commit 67f0324e60e01540080223d14282c100655c302e
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 18:41:18 2018 -0600
+
+    created a small program to listen to tcp and print out what is received
+
+commit 172917f2570c2298aa08fa629193555d5d26a640
+Author: Akhil Reddy Sangem - student <arsangem@pyrite-n2.cs.iastate.edu>
+Date:   Mon Jan 29 14:58:47 2018 -0600
+
+    edited exampleAgent to run on pyrite
+
+commit 6c076509fdcd5cc778808545aac91b156c7e23e0
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 14:55:41 2018 -0600
+
+    Added example agent
+
+commit 0bdd51ba94202808a33927d0afe81eae9376140c
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 14:53:44 2018 -0600
+
+    test
+
+commit 5e386fecf3c76e7a7fc768403e0c760e1ed12275
+Author: Akhil Sangem <akhilsangem@gmail.com>
+Date:   Mon Jan 29 14:45:03 2018 -0600
+
+    Initial commit
