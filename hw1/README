@@ -1,0 +1,35 @@
+
+                            Akhil Sangem
+                              Com S 487
+                                HW 1
+
+                    Make using "make -f Makefile"
+                    run with ./test
+
+In this project we had to create both servers and clients using Java and C.
+My programs currently are able to connect with each other and communicate simple
+requests such as the ID of the agent running, and returning user input through tcp.
+
+Through much effort I was only able to achieve simple sending and receiving.
+I hit many roadblocks as I have no experience with sockets and threads.
+
+With sockets I learned how to open and connect both UDP and TCP sockets.
+The method for using each was very similar, but there were a few changes
+such as using binding.
+
+One major roadblock I hit was the local address in java and C. In C this was
+simple to implement. However on java it took much trial and error in order
+to finally communicate with the C program.
+
+I also learned with big endian and little endian how these bits are transferred.
+After being very confused with having mismatched data I realized that my bits
+were not the same as I had thought and I was able to fix this issue in java by
+converting to little endian.
+
+The next issue I faced was learning about threads in both languages.
+The concept of threads was not hard to follow. However, implementing them
+posed a challenge. Learning about interrupts and locks helped me figure this out.
+
+Overall this was a fun project, despite the many challenges that I faced because
+I was able to learn new skills that were completely foreign to me when I had
+started.

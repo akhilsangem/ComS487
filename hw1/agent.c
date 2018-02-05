@@ -33,18 +33,24 @@ void *heartBeat(void *arg){
   printf("ID is %d\n", b.ID);
 
   int sock, length, fromlen, n;
+
   struct sockaddr_in server;
   struct sockaddr_in from;
-  //char buf[1024];
+
+
   int size = sizeof(b);
   char buf[size];
+
   sock=socket(AF_INET, SOCK_DGRAM, 0);
   if (sock < 0)
   {
     printf("Opening socket\n");
   }
+
   length = sizeof(server);
+
   bzero(&server,length);
+
   server.sin_family=AF_INET;
   server.sin_addr.s_addr=INADDR_ANY;
   server.sin_port=htons(9002);
@@ -54,7 +60,8 @@ void *heartBeat(void *arg){
   memset(buf, 0x00, size);
   memcpy(buf, &b, size);
 
-  while(1){
+  while(1)
+  {
     usleep(1);
 
     //n = sendto(sock,"Got your message\n",17,0, (struct sockaddr *)&from,fromlen);
@@ -70,13 +77,18 @@ void *heartBeat(void *arg){
   return NULL;
 }
 
-int main(int argc, char const *argv[], char * envp[]) {
+int main(int argc, char const *argv[], char * envp[])
+{
+
   pthread_t beaconHeart;
   pthread_create(&beaconHeart,NULL,heartBeat,NULL);
+
   struct utsname unameData;
   uname(&unameData);
+
   char server_message[1];
   char server_response[256] = "Holy Shit you got to the server";
+
   //create server socket
   int server_socket;
   server_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -89,8 +101,11 @@ int main(int argc, char const *argv[], char * envp[]) {
 
   //bind the socket to our specified ip and sin_port
   bind(server_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
+
   int client_socket;
-  while (1) {
+
+  while (1)
+  {
     usleep(1);
     printf("Waiting for tcp request\n");
     listen(server_socket, 5);
@@ -99,17 +114,19 @@ int main(int argc, char const *argv[], char * envp[]) {
     //bind(client_socket, (struct sockaddr*)  &server_address, sizeof(server_address));
     //bzero(server_message,256);
     recv(client_socket, server_message, sizeof(server_message), 0);
-    if(server_message[0] == '2'){
-      write(client_socket, unameData.sysname, 12);
+
+    //printf("Enter 2 to receive OS data\n");
+    if(server_message[0] == '2')
+    {
+      write(client_socket, unameData.sysname, 200);
     }
 
-      write(client_socket, "You Have Connected to the C Server\n", 256);
-      printf("%s\n", server_message);
+    write(client_socket, "You Have Connected to the C Server\n", 256);
 
-
+    printf("%s\n", server_message);
 
     //close(client_socket);
-    }
+  }
   //close(server_socket);
   pthread_join(beaconHeart,NULL);
   return 0;
